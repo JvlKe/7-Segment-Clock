@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+body {
+  margin: 0;
+  background: black;
+  color: red;
+  font-family: 'Orbitron', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  user-select: none;
+}
+
+.clock-container {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.digit, .colon {
+  position: relative;
+  width: 90px;
+  height: 160px;
+}
+
+.segment {
+  position: absolute;
+  background: #462e2e;
+  transition: 0.2s;
+  border-radius: 8px;
+}
+
+.segment.on {
+  background: red;
+  box-shadow: 0 0 15px red;
+}
+
+.segment.a, .segment.d, .segment.g {
+  width: 60px;
+  height: 18px;
+  left: 15px;
+}
+
+.segment.a { top: 0; }
+.segment.d { bottom: 0; }
+.segment.g { top: 71px; }
+
+.segment.b, .segment.c, .segment.e, .segment.f {
+  width: 18px;
+  height: 60px;
+}
+
+.segment.b { top: 15px; right: 0; }
+.segment.c { bottom: 15px; right: 0; }
+.segment.e { bottom: 15px; left: 0; }
+.segment.f { top: 15px; left: 0; }
+
+.colon {
+  width: 28px;
+  margin: 0 8px;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  background: red;
+  box-shadow: 0 0 12px red;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot.top { top: 45px; }
+.dot.bottom { bottom: 45px; }
+
+.pm-indicator {
+  color: red;
+  font-size: 21px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-family: 'Orbitron', monospace;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(100%, 100%);
+}
+
+.date-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+
+.date-left, .date-right { letter-spacing: 3px; }
+
+@media (max-width: 440px) {
+  .digit, .colon { width: 70px; height: 120px; }
+  .segment.a, .segment.d, .segment.g { width: 48px; height: 14px; left: 11px; }
+  .segment.b, .segment.c, .segment.e, .segment.f { width: 14px; height: 48px; }
+  .colon { width: 20px; margin: 0 6px; }
+  .dot { width: 12px; height: 12px; box-shadow: 0 0 9px red; }
+  .dot.top { top: 35px; }
+  .dot.bottom { bottom: 35px; }
+  .pm-indicator { font-size: 17px; bottom: -30px; }
+  .date-container { width: 320px; font-size: 14px; margin-left: 20px; }
+}
