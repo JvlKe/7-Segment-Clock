@@ -35,23 +35,22 @@ function updateDigit(elem, num) {
   SEGMENTS[num].forEach((on, i) => segs[i].classList.toggle('on', on));
 }
 
+function pad2(n) {
+  return n < 10 ? '0' + n : '' + n;
+}
+
 function updateClock() {
   const now = new Date();
   let h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
   const ampm = h >= 12 ? 'PM' : 'AM';
   h = h % 12 || 12;
-  const time = [Math.floor(h / 10), h % 10, Math.floor(m / 10), m % 10, Math.floor(s / 10), s % 10];
-  time.forEach((v, i) => {
-    const el = document.getElementById(ids[i]);
-    if (ids[i] === 'hour-tens') el.style.visibility = v === 0 ? 'hidden' : 'visible';
-    if (v !== 0 || ids[i] !== 'hour-tens') updateDigit(el, v.toString());
-  });
+  const time = [...pad2(h), ...pad2(m), ...pad2(s)].map(Number);
+  time.forEach((v, i) => updateDigit(document.getElementById(ids[i]), v.toString()));
   document.getElementById('ampm').textContent = ampm;
   document.getElementById('date').textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase();
   document.getElementById('day').textContent = now.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
 }
 
-// Initialization
 const container = document.getElementById('digits');
 ids.forEach((id, i) => {
   container.appendChild(createDigit(id));
