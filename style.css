@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-
 body {
   margin: 0;
   background: black;
@@ -97,8 +95,9 @@ body {
   margin-top: 15px;
 }
 
-
-.date-left, .date-right { letter-spacing: 3px; }
+.date-left, .date-right {
+  letter-spacing: 3px;
+}
 
 @media (max-width: 440px) {
   .digit, .colon { width: 70px; height: 120px; }
